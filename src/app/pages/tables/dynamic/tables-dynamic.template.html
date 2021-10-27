@@ -1,0 +1,220 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Estás aquí</li>
+  <li class="breadcrumb-item active">Búsqueda de carga</li>
+</ol>
+<!-- <h1 class="page-title">Buscar - <span class="fw-semi-bold">Carga</span></h1> -->
+<section class="widget" widget>
+  <header>
+    <h4><span class="fw-semi-bold">Resultados búsqueda de carga</span></h4>
+    <div class="widget-controls">
+      <a data-widgster="expand" title="Expand" href="#"><i class="la la-angle-up"></i></a>
+      <a data-widgster="collapse" title="Collapse" href="#"><i class="la la-angle-down"></i></a>
+      <a data-widgster="close" title="Close" href="#"><i class="la la-remove"></i></a>
+    </div>
+    
+  </header>
+  <div class="widget-body">
+    <div class="mt">
+      <div class="float-right mb">
+        <div class="input-group input-group-rounded">
+          <span class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="fa fa-search"></i>
+            </span>
+          </span>
+          <input class="form-control"
+                 (keyup)='updateFilter($event)' type="text" placeholder="Buscar en tabla">                
+                 <a class="ml-5 mt-1" (click)="launchModal.show()">
+                   <img width="16" height="16" src="assets/icon/embudo.svg"  title="Buscar carga"> Buscar carga
+                 </a>
+        </div>
+      </div>
+      <div>
+        <ngx-datatable
+          class="table table-striped table-hover"
+          [rows]="people"
+          [columnMode]="'force'"
+          [headerHeight]="50"
+          [footerHeight]="50"
+          [rowHeight]="'auto'"
+          [limit]="3">
+          <ngx-datatable-column name="ID">
+            <ng-template let-value="value" ngx-datatable-cell-template>
+              {{value}}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Name">
+            <ng-template let-value="value" ngx-datatable-cell-template>
+              <span class="fw-semi-bold">{{value}}</span>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Info">
+            <ng-template let-value="value" ngx-datatable-cell-template>
+              <small>
+                <span class="circle bg-success"> </span>
+                &nbsp; {{value.type}}
+              </small>
+              <br>
+              <small>
+                <span class="circle bg-danger"> </span>
+                &nbsp; {{value.dimensions}}
+              </small>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Description">
+            <ng-template let-value="value" ngx-datatable-cell-template>
+              <a href="#" >{{value}}</a>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Date">
+            <ng-template let-value="value" ngx-datatable-cell-template>
+              {{value}}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column>
+            <ng-template let-value="value" ngx-datatable-cell-template>
+                <span class="glyphicon glyphicon-star mr-1" style="color: yellow;"></span>
+                <span class="glyphicon glyphicon-star mr-1" style="color: yellow;"></span>
+                <span class="glyphicon glyphicon-star mr-1" style="color: yellow;"></span>
+                <span class="glyphicon glyphicon-star mr-1" style="color: yellow;"></span>
+                <span class="glyphicon glyphicon-star mr-1" style="color: yellow;"></span>
+            </ng-template>
+          </ngx-datatable-column>
+        </ngx-datatable>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="widget" widget>
+  <header>
+    <h4>Ng2 <span class="fw-semi-bold">Tables</span></h4>
+    <div class="widget-controls">
+      <a data-widgster="expand" title="Expand" href="#"><i class="la la-angle-up"></i></a>
+      <a data-widgster="collapse" title="Collapse" href="#"><i class="la la-angle-down"></i></a>
+      <a data-widgster="close" title="Close" href="#"><i class="la la-remove"></i></a>
+    </div>
+  </header>
+  <div class="widget-body">
+    <p>
+      Simple table extension with sorting, filtering and pagination for Angular2 apps. Built with
+      <a href="http://valor-software.github.io/ng2-table/" target="_blank">ng2-table</a>
+    </p>
+    <p>
+      <input *ngIf="config.filtering"
+             [ngTableFiltering]="config.filtering"
+             (tableChanged)="onChangeTable(config)"
+             class="form-control input-no-border bg-gray-lighter"
+             placeholder="Filter Table" type="text">
+    </p>
+    <ng-table [config]="config.sorting"
+              (tableChanged)="onChangeTable(config)"
+              [rows]="rows" [columns]="columns">
+    </ng-table>
+    <pagination *ngIf="config.paging"
+                class="pagination-sm"
+                [(ngModel)]="page"
+                [totalItems]="length"
+                [itemsPerPage]="itemsPerPage"
+                [maxSize]="maxSize"
+                [boundaryLinks]="true"
+                [rotate]="false"
+                (pageChanged)="onChangeTable(config, $event)"
+                (numPages)="numPages = $event">
+    </pagination>
+    <pre *ngIf="config.paging" class="card card-block card-header">Page: {{page}} / {{numPages}}</pre>
+  </div>
+
+</section>
+
+<div class="modal fade" bsModal #launchModal="bs-modal" [config]="{backdrop: 'static'}">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Buscar carga</h4>
+        <button type="button" class="close pull-right" (click)="launchModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container container-fluid">
+          <div class="row">
+            <div class="col-12 ">
+                    <div class="widget-body">
+        <form role="form">
+          <fieldset>
+            <legend><strong>Default</strong> Form</legend>
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="search-input">Search type input</label>
+                  <div class="input-group">
+                    <input type="search" class="form-control" id="search-input">
+                    <span class="input-group-append">
+                      <button type="button" class="btn btn-default">Search</button>
+                    </span>
+                  </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                  <div class="input-group">
+                    <span class="input-group-prepend">
+                      <span class="input-group-text bg-transparent">
+                        <i class="fa fa-github-alt"></i>
+                      </span>
+                    </span>
+                    <input class="form-control" size="16" type="text" placeholder="First Name">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-lg">
+                    <span class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-bars"></i>
+                      </span>
+                    </span>
+                    <input class="form-control" size="16" type="text" placeholder="Username">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-sm">
+                    <input class="form-control" size="16" type="text" placeholder="City">
+                    <span class="input-group-append">
+                      <span class="input-group-text bg-danger text-white">
+                        <i class="fa fa-code-fork"></i>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="mb-sm">
+                <input class="js-slider" id="slider-ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+            </div>
+            <div class="slider-danger mb-sm">
+                <input class="js-slider" id="slider-ex2" data-slider-id='ex2Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="18"/>
+            </div>
+            <div class="slider-warning mb-sm">
+                <input class="js-slider" id="slider-ex3" data-slider-id='ex3Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="7"/>
+            </div>
+            <div class="slider-success mb-sm">
+                <input class="js-slider" id="slider-ex4" data-slider-id='ex4Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="11"/>
+            </div>
+            <div class="slider-inverse mb-sm">
+                <input class="js-slider" id="slider-ex5" data-slider-id='ex5Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="4"/>
+            </div>
+            </div>
+          </fieldset>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-success">Buscar</button>
+          </div>
+        </form>
+      </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
