@@ -1,5 +1,5 @@
 <ol class="breadcrumb">
-  <li class="breadcrumb-item">Estás aquí</li>
+  <li class="breadcrumb-item"></li>
   <li class="breadcrumb-item active">Búsqueda de carga</li>
 </ol>
 <!-- <h1 class="page-title">Buscar - <span class="fw-semi-bold">Carga</span></h1> -->
@@ -24,9 +24,8 @@
           </span>
           <input class="form-control"
                  (keyup)='updateFilter($event)' type="text" placeholder="Buscar en tabla">                
-                 <a class="ml-5 mt-1" (click)="launchModal.show()">
-                   <img width="16" height="16" src="assets/icon/embudo.svg"  title="Buscar carga"> Buscar carga
-                 </a>
+                 <a class="ml-5 mt-1 mr-3" (click)="launchModal.show()">
+                   <img width="16" height="16" src="assets/icon/embudo.svg"  title="Buscar carga" class="mr-2" style="color: #374047;"><span style="font-weight: bold;">Buscar carga</span></a>
         </div>
       </div>
       <div>
@@ -37,47 +36,66 @@
           [headerHeight]="50"
           [footerHeight]="50"
           [rowHeight]="'auto'"
-          [limit]="3">
+          [limit]="4">
           <ngx-datatable-column name="ID">
+            <ng-template ngx-datatable-header-template>
+              <span>ID</span>
+            </ng-template>
             <ng-template let-value="value" ngx-datatable-cell-template>
               {{value}}
             </ng-template>
           </ngx-datatable-column>
           <ngx-datatable-column name="Name">
+            <ng-template ngx-datatable-header-template>
+              <span>Nombres</span>
+            </ng-template>
             <ng-template let-value="value" ngx-datatable-cell-template>
               <span class="fw-semi-bold">{{value}}</span>
             </ng-template>
           </ngx-datatable-column>
           <ngx-datatable-column name="Info">
+            <ng-template ngx-datatable-header-template>
+              <span>Orígen/Destino</span>
+            </ng-template>
             <ng-template let-value="value" ngx-datatable-cell-template>
               <small>
-                <span class="circle bg-success"> </span>
+                <span><img src="assets/icon/gotagreen.png" alt="destino" title="destino" style="width: 13px;"></span>
                 &nbsp; {{value.type}}
               </small>
               <br>
               <small>
-                <span class="circle bg-danger"> </span>
+                <span><img src="assets/icon/gotared.png" alt="destino" title="destino" style="width: 13px;"></span>
                 &nbsp; {{value.dimensions}}
               </small>
             </ng-template>
           </ngx-datatable-column>
           <ngx-datatable-column name="Description">
+            <ng-template ngx-datatable-header-template>
+              <span>Edad Publicación</span>
+            </ng-template>
             <ng-template let-value="value" ngx-datatable-cell-template>
+              <span class="glyphicon glyphicon-dashboard"></span>&nbsp;
               <a href="#" >{{value}}</a>
             </ng-template>
           </ngx-datatable-column>
           <ngx-datatable-column name="Date">
+            <ng-template ngx-datatable-header-template>
+              <span>Fecha</span>
+            </ng-template>
             <ng-template let-value="value" ngx-datatable-cell-template>
               {{value}}
             </ng-template>
           </ngx-datatable-column>
           <ngx-datatable-column>
+            <ng-template ngx-datatable-header-template>
+              <span>Calificación</span>
+            </ng-template>
             <ng-template let-value="value" ngx-datatable-cell-template>
-                <span class="glyphicon glyphicon-star mr-1" style="color: yellow;"></span>
-                <span class="glyphicon glyphicon-star mr-1" style="color: yellow;"></span>
-                <span class="glyphicon glyphicon-star mr-1" style="color: yellow;"></span>
-                <span class="glyphicon glyphicon-star mr-1" style="color: yellow;"></span>
-                <span class="glyphicon glyphicon-star mr-1" style="color: yellow;"></span>
+                <span class="glyphicon glyphicon-star mr-1" style="color:#F8F307;"></span>
+                <span class="glyphicon glyphicon-star mr-1" style="color: #F8F307;"></span>
+                <span class="glyphicon glyphicon-star mr-1" style="color: #F8F307;"></span>
+                <span class="glyphicon glyphicon-star mr-1" style="color: #F8F307;"></span>
+                <span class="glyphicon glyphicon-star mr-1" style="color:#F8F307;"></span>
             </ng-template>
           </ngx-datatable-column>
         </ngx-datatable>
@@ -197,9 +215,9 @@
           </fieldset>
           <div class="row">
             <div class="col-12 text-center">
-              <button class="btn btn-block btn-outline-success" style="font-weight: bold;">Camioneta,transporte de vidrio</button>
+              <button class="btn btn-block btn-outline-success" style="font-weight: bold;">Camioneta, transporte de vidrio</button>
               <button class="btn btn-block btn-outline-success" style="font-weight: bold;">Información opcional</button>
-            </div>>
+            </div>
           </div>
           <div class="form-actions text-center">
             <button type="submit" class="btn btn-success">Buscar</button>

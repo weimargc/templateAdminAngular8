@@ -5,8 +5,8 @@ declare let jQuery: any;
 
 const PEOPLE = [
   {
-    'id': '1',
-    'name': 'José',
+    'id': '1000000001',
+    'name': 'José Manuel Rey',
     'info': {
       'type': 'Pasto - Nariño',
       'dimensions': 'Cali - Valle Del Cauca'
@@ -19,8 +19,8 @@ const PEOPLE = [
     }
   },
   {
-    'id': '2',
-    'name': 'José',
+    'id': '21000000001',
+    'name': 'José Manuel Rey',
     'info': {
       'type': 'Pasto - Nariño',
       'dimensions': 'Bogotá D.C - Bogotá D.C'
@@ -33,8 +33,8 @@ const PEOPLE = [
     }
   },
   {
-    'id': '3',
-    'name': 'José',
+    'id': '31000000001',
+    'name': 'José Manuel Rey',
     'info': {
       'type': 'Pasto - Nariño',
       'dimensions': 'Neiva - Huila'
@@ -47,8 +47,8 @@ const PEOPLE = [
     }
   },
   {
-    'id': '4',
-    'name': 'José',
+    'id': '41000000001',
+    'name': 'José Manuel Rey',
     'info': {
       'type': 'Pasto - Nariño',
       'dimensions': 'Neiva - Huila'
@@ -60,7 +60,7 @@ const PEOPLE = [
     }
   },
   {
-    'id': '5',
+    'id': '51000000001',
     'name': 'José',
     'info': {
       'type': 'Pasto - Nariño',
